@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .container {
+            height: 200px;
+            width: 200px;
+            overflow: hidden;
+        }
+
+        .child {
+            width: auto;
+            height: 200px;
+            display: flex;
+            justify-content: space-between;
+            transition: 0.5s all ease-in-out;
+        }
+
+        .fbox {
+            flex-shrink: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background: purple;
+        }
+
+        .box4 {
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+
+        .box5 {
+            width: 200px;
+            height: 200px;
+            background: rgb(255, 217, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <button id="left">left</button>
+    <div class="container">
+        <div class="child" id="child">
+
+            <div class="fbox box"></div>
+            <div class="fbox box2"></div>
+            <div class="fbox box3"></div>
+            <div class="fbox box4"></div>
+            <div class="fbox box5"></div>
+
+        </div>
+    </div>
+    <button id="right">right</button>
+
+    <script>
+        let left = document.getElementById('left');
+        let right = document.getElementById('right');
+        let child = document.getElementById('child');
+
+        let counter = 0;
+
+
+        setInterval(() => {
+            counter -= 200;
+            if (counter == -1000) {
+                counter = 0;
+            }
+            child.style.transform = `translateX(${counter}px)`;
+        }, 3000)
+
+        right.addEventListener('click', () => {
+            counter -= 200;
+            if (counter == -1000) {
+                counter = 0;
+            }
+            child.style.transform = `translateX(${counter}px)`;
+        })
+
+        left.addEventListener('click', () => {
+            counter += 200;
+            if (counter > 0) {
+                counter = -800;
+            }
+            child.style.transform = `translateX(${counter}px)`;
+        })
+
+    </script>
+</body>
+
+</html>

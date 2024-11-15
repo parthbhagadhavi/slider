@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+        .slider-container {
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+    background-color: coral;
+}
+    </style>
+  <div class="slider-container">
+    <img src="image1.jpg" alt="Image 1" class="slide-img">
+    <img src="image2.jpg" alt="Image 2" class="slide-img">
+    <img src="image3.jpg" alt="Image 3" class="slide-img">
+  </div>
+  <script src="script.js"></script>
+
+  <script>
+    const sliderContainer = document.querySelector('.slider-container');
+const slideImages = document.querySelectorAll('.slide-img');
+
+let slideIndex = 0;
+
+function showSlide(index) {
+  slideImages.forEach((image, i) => {
+    image.style.display = i === index ? 'block' : 'none';
+  });
+}
+
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % slideImages.length;
+  showSlide(slideIndex);
+}
+
+function prevSlide() {
+  slideIndex = (slideIndex - 1 + slideImages.length) % slideImages.length;
+  showSlide(slideIndex);
+}
+
+// Initial display
+showSlide(slideIndex);
+
+// Automatic slide show (optional)
+setInterval(nextSlide, 3000); // Change slide every 3 seconds
+  </script>
+</body>
+</html>
